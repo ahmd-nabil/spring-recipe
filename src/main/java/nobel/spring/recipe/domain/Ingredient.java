@@ -16,7 +16,6 @@ public class Ingredient {
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
 
-    // TODO ** check if it's right to have ManyToOne here or should it be unidirectional
     @ManyToOne
     private Recipe recipe;
     public Long getId() {
