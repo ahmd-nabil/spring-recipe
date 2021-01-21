@@ -144,7 +144,6 @@ public class Recipe {
     }
 
     public void addCategory(Category category) {
-        category.getRecipes().add(this);
         this.categories.add(category);
     }
 }
