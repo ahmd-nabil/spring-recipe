@@ -1,4 +1,5 @@
 package nobel.spring.recipe.bootstrap;
+import lombok.extern.slf4j.Slf4j;
 import nobel.spring.recipe.domain.*;
 import nobel.spring.recipe.repositories.CategoryRepository;
 import nobel.spring.recipe.repositories.RecipeRepository;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+@Slf4j
 @Component
 public class RecipesBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
