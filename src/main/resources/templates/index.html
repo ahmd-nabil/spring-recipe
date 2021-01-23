@@ -15,6 +15,7 @@
                     <th>ID</th>
                     <th>Description</th>
                     <th>Difficulty</th>
+                    <th>Directions</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@
                     <td th:text="${recipe.getId()}"></td>
                     <td th:text="${recipe.getDescription()}"></td>
                     <td th:text="${recipe.getDifficulty()}"></td>
+                    <td th:text="${recipe.getDirections()}"></td>
                 </tr>
             </tbody>
         </table>
