@@ -56,11 +56,11 @@ class IndexControllerTest {
         recipe2.setId(1l);
         recipes.add(recipe2);
 
-        when(recipeService.getRecipes()).thenReturn(recipes);
+        when(recipeService.findAll()).thenReturn(recipes);
 
         assertEquals("index", indexController.getIndexPage(model));
 
-        Mockito.verify(recipeService, Mockito.times(1)).getRecipes();
+        Mockito.verify(recipeService, Mockito.times(1)).findAll();
 
         ArgumentCaptor<Set> argumentCaptor = ArgumentCaptor.forClass(Set.class); // this is just a matcher object (no actual data in it)
 

@@ -28,6 +28,7 @@
                     <td th:text="${recipe.getDescription()}"></td>
                     <td th:text="${recipe.getDifficulty()}"></td>
                     <td th:text="${recipe.getDirections()}"></td>
+                    <td><a href = "#" th:href="'/recipes/'+${recipe.id}"> View </a></td>
                 </tr>
             </tbody>
         </table>

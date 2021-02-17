@@ -9,10 +9,13 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
 
@@ -33,10 +36,24 @@ class RecipeServiceImplTest {
         Set<Recipe> recipes = new HashSet<>();
         recipes.add(recipe);
 
-        Mockito.when(recipeRepository.findAll()).thenReturn(recipes);
+        when(recipeRepository.findAll()).thenReturn(recipes);
 
-        assertEquals(recipeService.getRecipes(), recipes);
+        assertEquals(recipeService.findAll(), recipes);
 
         Mockito.verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void getRecipeById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(2L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(2L);
+
+        assertNotNull(recipeReturned);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 }
