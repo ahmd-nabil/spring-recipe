@@ -18,5 +18,5 @@ public class Notes {
     private Recipe recipe;
 
     @Lob        // means to store it in a CLOB (Character Large OBject in the database)
-    private String notes;
+    private String recipeNotes;
 }

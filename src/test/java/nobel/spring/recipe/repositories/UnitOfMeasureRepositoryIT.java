@@ -26,6 +26,6 @@ class UnitOfMeasureRepositoryIT {
     @Test
     void findByUnit() {
         Optional<UnitOfMeasure> uomOptional = uomRepository.findByUnit("Cup");
-        assertEquals("Cup", uomOptional.get().getUnit());
+        assertEquals("Cup", uomOptional.get().getDescription());
     }
 }
