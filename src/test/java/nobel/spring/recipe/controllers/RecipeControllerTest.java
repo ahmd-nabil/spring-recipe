@@ -45,7 +45,7 @@ class RecipeControllerTest {
     }
 
     @Test
-    public void showFormTest() throws Exception {
+    public void newRecipeTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
         mockMvc.perform(MockMvcRequestBuilders.get("/recipes/new"))
                 .andExpect(status().isOk())
