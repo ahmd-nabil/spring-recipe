@@ -1,11 +1,10 @@
 package nobel.spring.recipe.controllers;
 
+import nobel.spring.recipe.commands.RecipeCommand;
 import nobel.spring.recipe.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/recipes")
@@ -16,9 +15,26 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
+    @GetMapping("/")
+    public String getRecipes(Model model) {
+        model.addAttribute("recipes", recipeService.findAll());
+        return "index";
+    }
     @GetMapping("/{id}")
     public String getRecipeById(@PathVariable Long id, Model model) {
         model.addAttribute("recipe", recipeService.findById(id));
         return "recipe/show";
+    }
+
+    @GetMapping("/new")
+    public String newRecipe(Model model) {
+        model.addAttribute("recipe", new RecipeCommand());
+        return "recipe/recipe-form";
+    }
+
+    @PostMapping("/saveOrUpdate")
+    public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
+        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+        return "redirect:/recipes/"+savedCommand.getId();
     }
 }
