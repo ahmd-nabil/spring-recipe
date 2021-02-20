@@ -27,7 +27,7 @@ public class RecipeController {
     }
 
     @GetMapping("/new")
-    public String newRecipe(Model model) {
+    public String showForm(Model model) {
         model.addAttribute("recipe", new RecipeCommand());
         return "recipe/recipe-form";
     }
