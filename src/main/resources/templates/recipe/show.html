@@ -84,7 +84,11 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" >Ingredients</h1>
+                        <div class="row">
+                            <h1 class="panel-title" >Ingredients</h1>
+                            <a th:href="@{/recipes/{id}/ingredients/(id=${recipe.id})}"
+                               class="btn btn-primary">Edit</a>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
