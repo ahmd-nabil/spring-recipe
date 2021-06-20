@@ -20,6 +20,7 @@ public class RecipeController {
         model.addAttribute("recipes", recipeService.findAll());
         return "index";
     }
+
     @GetMapping("/{id}")
     public String getRecipeById(@PathVariable Long id, Model model) {
         model.addAttribute("recipe", recipeService.findById(id));
